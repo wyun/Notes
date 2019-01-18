@@ -33,3 +33,9 @@ When no other return is available, return error.
 ```Java
 throw new IllegalArgumentException("No two sum solution");
 ```
+
+
+## Binary Tree
+
+### Traverse a tree
+[Template is shown on Huahua (timecode: 16:34)](https://www.youtube.com/watch?v=PbGl8_-bZxI&t=0s&list=PLLuMmzMTgVK7ug02DDoQsf50OtwVDL1xd&index=2)

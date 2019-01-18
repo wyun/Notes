@@ -523,3 +523,280 @@ function getVideo() {
 }
 
 ```
+
+// come back later
+
+## 20. Native Speech Recognition
+
+Progression of the program:
+- Listen for interim results
+- create p element and add to the div.
+- recognition will use an event listener for `result` (similar to `click`), to add this p element. This will only listen once, after result is done, the event is unbound. 
+- for continuous listening, we need to add another event listener `end`, then call `.start()` on the speech recognition. 
+- __make sure no other browser window is using the microphone__, otherwise, no feedback on the current window. 
+
+```JS
+window.SpeechRecognition = window.SpeechRecognition ||  window.webkitSpeechRecognition;
+
+const recognition = new SpeechRecognition();
+recognition.interimResults = true;
+recognition.lang = 'zh-CN';
+
+let p = document.createElement('p');
+const words = document.querySelector('.words');
+words.appendChild(p);
+
+recognition.addEventListener('result', e => {
+const transcript = Array.from(e.results)
+    .map(result => result[0])
+    .map(result => result.transcript)
+    .join('');
+    p.textContent = transcript;
+});
+
+recognition.addEventListener('end', e => {
+    recognition.start();
+    p = document.createElement('p');
+    words.appendChild(p);
+});
+
+recognition.start();
+
+```
+
+## 21. Geolocation based Speedometer and Compass
+// come back later, need mac and iphone simulator. 
+
+## 22. Follow Along Links
+
+Events available to listen on HTML tags:
+- mouseenter
+- mouseleave
+
+```JS
+const linkCoords = this.getBoundingClientRect();
+```
+which yields a rectangular object with dimensions, without scrolling:
+- top
+- left
+- width
+- height
+
+- right
+- bottom
+
+For absolute location, add `window.scrollX` and `window.scrollY` to the left and top value.
+
+Rather than define top and left attribute, we can use `transform` to move the element location:
+```CSS
+highlight.style.transform = `translate(${linkCoords.left}px, ${linkCoords.top}px)`;
+```
+`px` at the end of the attribute is important. Without it, the value doesn't put the element in the correct position.
+
+## 23. Speech Synthesis
+
+speechSynthesis is a global variable, and can be passed with a SpeechSynthesisUtterance to `speak(utterance)` to speak the text.
+
+```JS
+  const msg = new SpeechSynthesisUtterance();
+  let voices = [];
+  const voicesDropdown = document.querySelector('[name="voice"]');
+  const options = document.querySelectorAll('[type="range"], [name="text"]');
+  const speakButton = document.querySelector('#speak');
+  const stopButton = document.querySelector('#stop');
+
+  msg.text = document.querySelector('[name="text"]').value;
+
+  function populateVoices() {
+    voices = this.getVoices();
+    const voiceOptions = voices.map(voice => 
+      `<option value="${voice.name}">${voice.name}</option>`)
+      .join('');
+    voicesDropdown.innerHTML = voiceOptions;
+  }
+
+  function setVoice() {
+    msg.voice = voices.find(voice => voice.name === this.value);
+    toggle();
+  }
+
+  function toggle(speak = true) {
+    speechSynthesis.cancel();
+    if (speak) {
+      speechSynthesis.speak(msg);
+    }
+  }
+
+  function setOptions() {
+    msg[this.name] = this.value;
+    toggle();
+  }
+  
+  // pay attention to how bind is used here. It didn't evoke the function, but allow parameters to be passed in.
+  stopButton.addEventListener('click', toggle.bind(null, false));
+  speakButton.addEventListener('click', toggle);
+  options.forEach(option => 
+    option.addEventListener('change', setOptions));
+  voicesDropdown.addEventListener('change', setVoice);
+  speechSynthesis.addEventListener('voiceschanged', populateVoices);
+```
+
+How to bind an event listener and pass in argument? use `bind`
+
+```JS
+// use the context of `this` and pass in argument `false`, or whatever the value is
+stopButton.addEventListener('click', toggle.bind(null, false));
+```
+
+
+## 24. Sticky Nav
+
+When scroll past nav bar's top, add a `fixed-nav` class to the body, not the nav bar itself.  This is more flexible because other things can change based on the body's class change, such as content, side bar, etc., not just nav bar itself.
+
+The change can be done on CSS with additional rule:
+```CSS
+nav {
+    position: relative;
+    top: 0;
+}
+
+.fixed-nav {
+    position: fixed;
+}
+```
+
+When nav bar is switched from 'relative' to 'fixed', the element is taken out of the document flow, and cause jittery to the next element.  Using the original element's offsetHeight to remove jittery.
+
+```JS
+  const nav = document.querySelector('nav');
+  const topOfNav = nav.offsetTop;
+  function fixNav() {
+    if (topOfNav - window.scrollY < 0) {
+      document.body.style.paddingTop = nav.offsetHeight + 'px';
+      document.body.classList.add('fixed-nav');
+    } else {
+      document.body.style.paddingTop = 0;
+      document.body.classList.remove('fixed-nav');
+    }
+  }
+
+  window.addEventListener('scroll', fixNav);
+```
+
+## 25. Event Capture, Propagation, Bubbling and Once
+
+In modern browser, when a click happens, event `capture` goes from parent to inner most child, then event `bubble` goes from child to parent.
+
+```HTML
+  <div class="one">
+    <div class="two">
+      <div class="three">
+      </div>
+    </div>
+  </div>
+```
+In `addEventListener`, we can add a third option to set `capture: true` to capture event on the way down, instead of the default `bubble` stage.  
+```JS
+  divs.forEach(div => div.addEventListener('click', eventHandlerFunc, {capture: true}));
+```
+
+To stop bubbling up and avoid trigger parent's event listener, add:
+```JS
+e.stopPropagation(); // stop bubbling.
+```
+
+Another new option is `once`, which will listen for event once, and then unbind itself. This is useful in store checkout, which disable user from submitting multiple times.
+```JS
+  divs.forEach(div => div.addEventListener('click', eventHandlerFunc, {once: true}));
+```
+
+## 26. Stripe Follow Along Dropdown
+
+// opacity and display:block work together to generate the animation with javascript. come back later.
+// Also need to do a setTimeout on the second class in order to get animation working.
+
+
+## 27. Click and Drag to Scroll
+
+Events to listen
+```JS
+slider.addEventListener('mousedown', () => {});
+slider.addEventListener('mouseleave', () => {});
+slider.addEventListener('mouseup', () => {});
+slider.addEventListener('mousemove', () => {});
+```
+
+Using CSS to scale content
+
+not active:
+```CSS
+.elm {
+  transition: all 0.2s;
+  transform: scale(0.98);
+}
+
+.elm.active {
+  transform: scale(1);
+}
+```
+
+Finished code with comments
+
+```JS
+  const slider = document.querySelector('.items');
+  // 1. add global is mouse down variable;
+  let isDown = false;
+  // need to know where to start on the whole div
+  let startX;
+  // also need to know where the scroll is
+  let scrollLeft;
+
+  slider.addEventListener('mousedown', (e) => {
+    isDown = true;
+    startX = e.pageX - slider.offsetLeft; 
+    scrollLeft = slider.scrollLeft;
+    slider.classList.add('active');
+  });
+
+  // 2. make sure isDown is marked as false when mouseleave is triggered. 
+  //  Some of the 'sticky' drag problem I encountered before might be related to this one.
+  slider.addEventListener('mouseleave', () => {
+    isDown = false;
+    slider.classList.remove('active');
+  });
+  slider.addEventListener('mouseup', () => {
+    isDown = false;
+    slider.classList.remove('active');
+  });
+  slider.addEventListener('mousemove', (e) => {
+    if (!isDown) return; // stop the function from running.
+    e.preventDefault(); // stop other weird stuff from happening.
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX)*3;
+    console.log({x, startX, walk}); //a quick way to show multiple variables is to generate an object.
+    // we can 'set' scrollLeft value, not just 'get'.
+    slider.scrollLeft = scrollLeft - walk;
+    console.log('do work');
+  });
+```
+
+## 28. Video Speed Controller UI
+
+[arrow function and this](https://wesbos.com/arrow-functions-this-javascript/)
+
+>You don’t just want to go willy-nilly using arrow functions everywhere, because it’s just less to type. You need to know what the benefits and the drawbacks of them are. In this case I don’t want an arrow function, because I need the keyword to reference the actual box that got clicked. That would be even more important if I had a whole bunch of them.
+
+>We can’t use an arrow function there. I’m going to bring that back to regular function.
+
+When we add a `setTimeout` function inside another function, we can use `this` in arrow function because:
+>when you have an arrow function, it does not change the value of `this`. It inherits the value of this from the parent. We don’t have to worry about the scope changing or anything like that.
+
+Read `Kyle Simpson`'s comment at the end. It clarifies/muddies some of the concept above. 
+
+### Math related to number rounding
+Rounding number: `Math.round(num);`
+
+Number to decimal points of 2: `num.toFixed(2);`
+
+
+## 29. Countdown Clock
