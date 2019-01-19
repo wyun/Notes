@@ -794,9 +794,48 @@ When we add a `setTimeout` function inside another function, we can use `this` i
 Read `Kyle Simpson`'s comment at the end. It clarifies/muddies some of the concept above. 
 
 ### Math related to number rounding
-Rounding number: `Math.round(num);`
-
-Number to decimal points of 2: `num.toFixed(2);`
+- Rounding number: `Math.round(num);`
+- Floor: `Math.floor(seconds / 60);`
+- Number to decimal points of 2: `num.toFixed(2);`
 
 
 ## 29. Countdown Clock
+
+setInterval does not always work for countdown. So absolute values need to be stored in order to get accurate results. 
+
+This episodes talked about setInterval and how to clear it. Not much going on.
+
+### Form
+
+Instead of getting form element one by one, we can use the `name` attribute to get it directly. 
+
+```HTML
+<form name="customForm" id="custom">
+<input type="text" name="minutes" placeholder="Enter Minutes">
+</form>
+```
+
+```JS
+var form = document.customForm;
+var min = form.minutes;
+```
+
+For forms, we listen to `submit` event and use `e.preventDefault()` to stop form from submitting. Also use `.reset()` to clear out form afterwards, instead of setting one value after another.
+```JS
+function customTimer(e) {
+    e.preventDefault();
+    console.log(this.minutes.value);
+    this.reset();
+}
+```
+
+
+## 30. Whack A Mole Game
+
+CSS Trick: To hide a child element by shifting it downwards in `top: 100%; position: absolute;`, and parent element's position as `relative;`
+
+Although most of this class is reviewing old content, it ties everything together. It's good to do it again to figure out the game flow and where to control the game properly. 
+
+## isTrusted in event
+
+If an event is faked (such as using javascript to trigger 'click', etc) `isTrusted` attribute of the event is `false`. For event coming from user's actual mouse input, `isTrusted` is true;
