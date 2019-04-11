@@ -132,6 +132,13 @@ function ContactCard(props) {
             <p>Age: {props.age}</p>
         </div>
     )
-
 }
+```
+
+We can also pass in object. 
+```JSX
+<ContactCard contact={{
+    name: "John Doe",
+    age: "36"
+}} />
 ```
