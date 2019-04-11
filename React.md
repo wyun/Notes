@@ -80,9 +80,10 @@ Semantic HTML5 elements
 - main
 - footer
 
-## Styling React with CSS classes
+## Styling React
 
-In JSX, we cannot add `class` to an element, we must use `className`. `className` can only be applied to elements, not user created components. 
+- with Class: in JSX, we cannot add `class` to an element, we must use `className`. `className` can only be applied to elements, not user created components. 
+- with inline style: only style object can be used, not typical string: `<h1 style={{color: "red"}}>Good morning</h1>` The inner set of curly braces is for object itself, the outer set of curly braces is to tell that it's javascript, so that JSX can interpret it as such. Propery names need to be camelCase, such as `backgroundColor`
 
 Here is some basic CSS to get a project started. 
 
@@ -103,4 +104,15 @@ body {
     align-items: center;
 }
 
+```
+
+In JSX, access to Javascript variables and constants can be accessed through a pair of `{ }`. we can use ES6 string template to access variables with ${varName}
+
+```JS
+const firstName = "John"
+const lastName = "Doe"
+
+return (
+    <h1>Hello, {`${firstName} ${lastName}`}!</h1>
+)
 ```
