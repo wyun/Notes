@@ -116,3 +116,5 @@ return (
     <h1>Hello, {`${firstName} ${lastName}`}!</h1>
 )
 ```
+
+## Props
