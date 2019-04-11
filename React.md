@@ -118,3 +118,20 @@ return (
 ```
 
 ## Props
+
+Attribute in html sense. Access props using `props.propName`
+```JSX
+<ContactCard name="John Doe" imgUrl="" age="36" />
+```
+
+```JS
+function ContactCard(props) {
+    return (
+        <div className="contact-card">
+            <h3>{props.name}</h3>
+            <p>Age: {props.age}</p>
+        </div>
+    )
+
+}
+```
