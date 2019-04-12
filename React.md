@@ -142,3 +142,5 @@ We can also pass in object.
     age: "36"
 }} />
 ```
+
+If a property is not defined in JSX, that property will be null. 
