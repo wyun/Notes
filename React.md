@@ -144,3 +144,7 @@ We can also pass in object.
 ```
 
 If a property is not defined in JSX, that property will be null. 
+
+## Mapping Components. 
+
+When we have an array, we can use Array.map to generate JSX array. Then this JSX array can be used directly in {} and be interprated by React properly. 
