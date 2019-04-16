@@ -162,6 +162,8 @@ Every class based component must have a `render` method.
 
 For `props`, remember to use `this.props` inside the class.
 
+We can abbreviate `extends React.Component` to `extends Component`, if the top import statement is changed to `import React, {Component} from 'react'`
+
 ```JS
 
 // function App() {
@@ -192,4 +194,29 @@ class App extends React.Component {
     }
 }
 
+```
+
+# State
+
+`props` are immutible. 
+
+`state` is mutable. Whenever `state` is needed, we will need to use `class-based component`
+
+`constructor` method is a special method in JS to initialize part of the component. More information about ES6 class, [tutorial](ttps://scrimba.com/p/p4Mrt9/cQnMDHD). `super()` should always be called first inside, to get the parent/super class's goodies.
+
+```JS
+class App extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+            
+        }
+    }
+
+    render() {
+        return (
+
+        )
+    }
+}
 ```
