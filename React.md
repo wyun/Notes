@@ -13,9 +13,11 @@ Props State
 ## ReactDOM & JSX
 
 The first thing to do in every React app is to:
+
 - import react
 - import react-dom
 Add react-dom and react dependencies first, then
+
 ```JS
 // index.js
 import React from "react"
@@ -27,9 +29,9 @@ ReactDOM.render(<h1>Hello World!</h1>, document.getElementById("root"))
 
 ## Functional Components
 
-Simply return the JSX from MyApp function, then call `<MyApp />` as JSX in `ReactDOM.render()`. 
+Simply return the JSX from MyApp function, then call `<MyApp />` as JSX in `ReactDOM.render()`.
 
-JSX must be one single element. You can always wrap around a `div` if necessary. 
+JSX must be one single element. You can always wrap around a `div` if necessary.
 
 ```JS
 function MyApp() {
@@ -49,8 +51,9 @@ ReactDOM.render(
 ```
 
 ## Move components into Separate files
+
 1. Move MyInfo() to a different file and call it 'MyInfo.js'. Make sure to add react import statement. Almost every react component need that line
-2. Export it in the end to make it available to other applications. 
+2. Export it in the end to make it available to other applications.
 3. Import it in the main file where it is used. `import MyInfo from "./MyInfo"`. Relative path and file name is needed. Default is 'js' extension. So it can be omitted.
 
 ```JS
@@ -69,12 +72,12 @@ export default MyInfo
 
 To understand more about ES6's import and export statements. Scrimba has a course on it.
 
-
 ## Parent/Child Components
 
 When creating components, almost capitlize the first character, so we can easily distinguish a regular html element from a React component.
 
 Semantic HTML5 elements
+
 - header
 - nav
 - main
@@ -82,10 +85,10 @@ Semantic HTML5 elements
 
 ## Styling React
 
-- with Class: in JSX, we cannot add `class` to an element, we must use `className`. `className` can only be applied to elements, not user created components. 
+- with Class: in JSX, we cannot add `class` to an element, we must use `className`. `className` can only be applied to elements, not user created components.
 - with inline style: only style object can be used, not typical string: `<h1 style={{color: "red"}}>Good morning</h1>` The inner set of curly braces is for object itself, the outer set of curly braces is to tell that it's javascript, so that JSX can interpret it as such. Propery names need to be camelCase, such as `backgroundColor`
 
-Here is some basic CSS to get a project started. 
+Here is some basic CSS to get a project started.
 
 ```CSS
 body {
@@ -120,6 +123,7 @@ return (
 ## Props
 
 Attribute in html sense. Access props using `props.propName`
+
 ```JSX
 <ContactCard name="John Doe" imgUrl="" age="36" />
 ```
@@ -135,7 +139,8 @@ function ContactCard(props) {
 }
 ```
 
-We can also pass in object. 
+We can also pass in object.
+
 ```JSX
 <ContactCard contact={{
     name: "John Doe",
@@ -143,8 +148,48 @@ We can also pass in object.
 }} />
 ```
 
-If a property is not defined in JSX, that property will be null. 
+If a property is not defined in JSX, that property will be null.
 
-## Mapping Components. 
+## Mapping Components
 
-When we have an array, we can use Array.map to generate JSX array. Then this JSX array can be used directly in {} and be interprated by React properly. 
+When we have an array, we can use Array.map to generate JSX array. Then this JSX array can be used directly in {} and be interprated by React properly.
+
+## Class-based component
+
+convert functional component to class based component
+
+Every class based component must have a `render` method.
+
+For `props`, remember to use `this.props` inside the class.
+
+```JS
+
+// function App() {
+//     return (
+//         <div>
+//             <h1>Code goes here</h1>
+//         </div>
+//     )
+// }
+
+class App extends React.Component {
+
+    yourMethodHere() {
+
+    }
+
+    render() {
+        // add other display logic and your own methods. Call your own method with `this.yourMethod`
+        const style = this.yourMethodHere()
+
+        const date = new Date()
+        return (
+            <div>
+                <h1>Code goes here {date.getFullYear()}</h1>
+                {this.props.whatever}
+            </div>
+        )
+    }
+}
+
+```
