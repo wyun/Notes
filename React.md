@@ -196,9 +196,9 @@ class App extends React.Component {
 
 ```
 
-# State
+## State
 
-`props` are immutible. 
+`props` are immutible.
 
 `state` is mutable. Whenever `state` is needed, we will need to use `class-based component`
 
@@ -208,9 +208,7 @@ class App extends React.Component {
 class App extends React.Component {
     constructor() {
         super()
-        this.state = {
-            
-        }
+        this.state = {}
     }
 
     render() {
@@ -220,3 +218,67 @@ class App extends React.Component {
     }
 }
 ```
+
+## Handling Events
+
+camelCased event handlers:
+
+- onClick
+- onMouseOver
+
+```JS
+    return (
+        <button onClick="myFunction()">Click me</button>
+    )
+```
+
+## Changing State
+
+Do not change `this.state` directly. Use `this.setState()` instead.
+
+One caveat:
+
+- Anytime when you want to use a customized method, you need to use `bind` to bind it to its own class.
+
+When changing based on previous state, pass in prevState, then return a new object.
+
+```JS
+    class App extends Component {
+        constructor() {
+            super()
+            this.state = {count: 0}
+            // this following line is important to expose `this` to that method
+            this.handleClick = this.handleClick.bind(this)
+        }
+
+        handleClick() {
+            this.setState(prevState => {
+                return {
+                    count: prevState.count + 1
+                }
+            })
+        }
+        
+        render() {
+            return (
+                <div>
+                    <h1>{this.state.count}</h1>
+                    <button onClick={this.handleClick}>Change!</button>
+                </div>
+            )
+        }
+    }
+```
+
+## React Lifecycle Methods
+
+[Explaination of lifecycles before 16.3](https://engineering.musefind.com/react-lifecycle-methods-how-and-when-to-use-them-2111a1b692b1)
+
+[Lifecycles after 16.3](https://reactjs.org/blog/2018/03/29/react-v-16-3.html#component-lifecycle-changes) or [another link](https://blog.bitsrc.io/react-16-lifecycle-methods-how-and-when-to-use-them-f4ad31fb2282)
+
+Lifcecycle Methods:
+
+- `componentDidMount()`: only run once when component is on screen. Most often, it is used to call an API to get information.
+- `componentWillReceiveProps(nextProps)`: will run whenever a parent component decides to pass down props. This method is deprecated. 
+- `shouldComponentUpdate(nextProps, nextState)`: gives developer to change the default updating behavior and make component more performant. return true if want update; return false if not.
+- `componentWillUnmount()`: do some clean up or tear down in the DOM or application, remove event listener, before component disappears.
