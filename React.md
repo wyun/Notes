@@ -282,3 +282,45 @@ Lifcecycle Methods:
 - `componentWillReceiveProps(nextProps)`: will run whenever a parent component decides to pass down props. This method is deprecated. 
 - `shouldComponentUpdate(nextProps, nextState)`: gives developer to change the default updating behavior and make component more performant. return true if want update; return false if not.
 - `componentWillUnmount()`: do some clean up or tear down in the DOM or application, remove event listener, before component disappears.
+
+## API
+
+- [fetch from MDN](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch)
+- [Promise in Javascript](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261)
+- [Star Wars API](https://swapi.co/)
+
+```JS
+componentDidMount() {
+    fetch("https://swapi.co/api/people/1")
+        .then(response => response.json())
+        .then(data => console.log(data))
+}
+```
+
+## Forms
+
+[Forms in React](https://reactjs.org/docs/forms.html)
+
+When events fire, it pass pre-determined event to the function. 
+
+We need to use [ ] to wrap around property name in object, if it's an variable. 
+
+```JS
+handleClick(event) {
+    this.setState({
+        [event.target.name]: event.target.value
+    })
+}
+```
+
+we can deconstruct variable out of object by doing this:
+
+```JS
+    ...
+    const {name, value} = event.target
+    this.setState({
+        [name]: value
+    })
+```
+
+Check out `controlled forms` vs `uncontrolled forms`, as well as `synthetic events`
