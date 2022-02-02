@@ -6,9 +6,9 @@ We got this notification about the resource account **aaiusesp** expiring.  We s
 The resource account is used by StarPanel for LDAP, OnBase, etc.
 
 Trisha's email: 
-Can you please submit the following Pegasus ticket - https://pegasus.mc.vanderbilt.edu/request/start/21/?s
+Can you please submit the following Pegasus ticket - https://pegasus.vumc.org/request/start/21/?s
  
-Include the following information in the ticket: (The knowledge article for submitting information is here - https://pegasus.mc.vanderbilt.edu/ViewKnowledge.aspx?id=21)
+Include the following information in the ticket: (The knowledge article for submitting information is here - https://pegasus.vumc.org/ViewKnowledge.aspx?id=21)
  
 The VUnetID, the first and last name, and an external email address for the individual.
 If this is a Resource or Test account, include the best notification email address.
