@@ -7,7 +7,7 @@
 var res = [];
 ```
 3.  run this code to generate 'PDF' files.
-```
+```JS
 var rows = document.getElementsByClassName('linkRow');
 for (var i in rows) {
     var link = rows[i].getAttribute('onclick');
