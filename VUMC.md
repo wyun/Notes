@@ -1,3 +1,22 @@
+# StarPanel Resource Account
+
+email: star.p.aai.user@vumc.org
+We got this notification about the resource account **aaiusesp** expiring.  We searched on Pegasus and didn’t find a proper place to renew it.  Do you know the proper way to send this renewal request?
+ 
+The resource account is used by StarPanel for LDAP, OnBase, etc.
+
+Trisha's email: 
+Can you please submit the following Pegasus ticket - https://pegasus.mc.vanderbilt.edu/request/start/21/?s
+ 
+Include the following information in the ticket: (The knowledge article for submitting information is here - https://pegasus.mc.vanderbilt.edu/ViewKnowledge.aspx?id=21)
+ 
+The VUnetID, the first and last name, and an external email address for the individual.
+If this is a Resource or Test account, include the best notification email address.
+The department (or school) under which the account is profiled. For example, Childrens Hospital, School of Engineering, etc.
+
+Previous Ticket: https://pegasus.vumc.org/request/?id=R00614006
+ 
+
 # Star Daily archive file
 *Aug 11, 2017, 12:07 PM by Yun Wang*
 ```
