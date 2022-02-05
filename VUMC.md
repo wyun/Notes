@@ -17,6 +17,9 @@ The department (or school) under which the account is profiled. For example, Chi
 Previous Ticket: https://pegasus.vumc.org/request/?id=R00614006
  
 
+# Oracle tnsnames.ora file location
+`\\celerra\psoft\oracle\admin\`
+
 # Star Daily archive file
 *Aug 11, 2017, 12:07 PM by Yun Wang*
 ```
