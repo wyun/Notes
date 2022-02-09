@@ -18,6 +18,14 @@ A few key points:
 ## Example script to Vandyworks / WorkBrain's stored procedure
 `stardev4:/home/httpd/webhome/cgi-bin/wangy9/top/testWorkBrain`
 
+# VandyWorks
+
+[VandyWorks Prod](https://www.vandyworks.com)
+ 
+[VandyWorks Test](https://vandyworkstest.app.vumc.org/) - VPN Required
+userID: vunet id
+password: abc123
+
 # FHIR workshop
 
 `https://confluence.app.vumc.org/display/VCLIC/2022+FHIR+App+Building+Workshop%2C+February+8th`
