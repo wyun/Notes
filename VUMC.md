@@ -18,6 +18,10 @@ A few key points:
 ## Example script to Vandyworks / WorkBrain's stored procedure
 `stardev4:/home/httpd/webhome/cgi-bin/wangy9/top/testWorkBrain`
 
+# FHIR workshop
+
+`https://confluence.app.vumc.org/display/VCLIC/2022+FHIR+App+Building+Workshop%2C+February+8th`
+
 # StarPanel Resource Account
 
 email: star.p.aai.user@vumc.org
