@@ -1,6 +1,14 @@
-# Oracle
+# Oracle Related Topics
+
+## How to use Cursor?
 
 http://www.dba-oracle.com/t_dbi_perl_lob_large_objects.htm
+
+A few key points:
+- $csr is a cursor type.  It needs to be defined as such.
+- Fetch results using $csr instead of $sth.
+- use DBD::Oracle qw(:ora_types);   # need this line to define cursor types
+
 
 # StarPanel Resource Account
 
