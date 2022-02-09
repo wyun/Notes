@@ -1,5 +1,8 @@
 # Oracle Related Topics
 
+## Setup .cshrc file
+`setenv LD_LIBRARY_PATH /usr/openwin/lib:... ... ... :/home/ICoracle`
+
 ## How to use Cursor?
 
 http://www.dba-oracle.com/t_dbi_perl_lob_large_objects.htm
@@ -9,6 +12,8 @@ A few key points:
 - Fetch results using $csr instead of $sth.
 - use DBD::Oracle qw(:ora_types);   # need this line to define cursor types
 
+## Example script to Vandyworks / WorkBrain's stored procedure
+`stardev4:/home/httpd/webhome/cgi-bin/wangy9/top/testWorkBrain`
 
 # StarPanel Resource Account
 
