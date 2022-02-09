@@ -1,5 +1,8 @@
 # Oracle Related Topics
 
+## Oracle tnsnames.ora file location
+`\\celerra\psoft\oracle\admin\`
+
 ## Setup .cshrc file
 `setenv LD_LIBRARY_PATH /usr/openwin/lib:... ... ... :/home/ICoracle`
 
@@ -32,10 +35,7 @@ If this is a Resource or Test account, include the best notification email addre
 The department (or school) under which the account is profiled. For example, Childrens Hospital, School of Engineering, etc.
 
 Previous Ticket: https://pegasus.vumc.org/request/?id=R00614006
- 
 
-# Oracle tnsnames.ora file location
-`\\celerra\psoft\oracle\admin\`
 
 # Star Daily archive file
 *Aug 11, 2017, 12:07 PM by Yun Wang*
