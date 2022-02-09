@@ -26,6 +26,15 @@ A few key points:
 userID: vunet id
 password: abc123
 
+## Open up the package body for VUMC_STAFFINGDASHBOARD_SP:
+ 
+`retrieveStaffingVariance`: Retrieves data for the Staffing Dashboard and Orange Alert Dashboard. The query is a cursor that returns basic info like team name, and has several embedded sub-cursors, to retrieve scheduled employees, employees on call, etc.   The resultset contains one row per team/shift combination (shift = day shift or night shift). 
+ 
+`retrieveOPStaffingVariance`: Retrieves data for Outpatient Projections.
+ 
+`retrieveNurseStaffingVariance`: – Retrieves data for Inpatient Projections
+ 
+
 # FHIR workshop
 
 `https://confluence.app.vumc.org/display/VCLIC/2022+FHIR+App+Building+Workshop%2C+February+8th`
