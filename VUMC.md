@@ -1,3 +1,7 @@
+# Oracle
+
+http://www.dba-oracle.com/t_dbi_perl_lob_large_objects.htm
+
 # StarPanel Resource Account
 
 email: star.p.aai.user@vumc.org
