@@ -1,3 +1,5 @@
 # Study Notes
 
-[JavaScript 30](JavaScript30.md)
+- [VUMC](VUMC.md)
+- [JavaScript 30](JavaScript30.md)
+- [C2HR - VUMC and VU Paycheck Download](C2HR.md)
