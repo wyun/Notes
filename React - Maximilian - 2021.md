@@ -622,3 +622,25 @@ const NewTask = (props) => {
 ## Install
 Pay attention it's router-dom, not router. 
 `npm install react-router-dom`.
+
+## Usage
+
+Routes is in react router 6, Switch was used in react router 5.
+```JS
+import { Routes, Route } from 'react-router-dom';
+// in JSX
+...
+    <Routes>
+      <Route path="/welcome" element={<Welcome />}></Route>
+    </Routes>
+...
+
+```
+
+
+# 24 Animation
+
+use `transition` etc to animate with CSS. 
+
+Or you can use react transition group package:
+`https://reactcommunity.org/react-transition-group/css-transition`
